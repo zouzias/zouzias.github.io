@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Some information about you!
+Hi there, my name is Anastasios Zouzias and I am currently a postdoctoral researcher at IBM Research Zurich. I obtained my PhD from the Computer Science department at the University of Toronto.
 
 ### More Information
 
@@ -12,4 +12,4 @@ A place to include any other types of information that you'd like to include abo
 
 ### Contact me
 
-[email@domain.com](mailto:email@domain.com)
+[zouzias@gmail.com](mailto:zouzias@gmail.com)
