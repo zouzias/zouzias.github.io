@@ -15,22 +15,17 @@ Just to be on the safe side, install a XML dependency that is used by the plugin
 
 Second, append the following lines in the file /etc/nagios3/command.cfg
 
-```
+{% highlight ruby %}
 # check_tomcat command definition
-
 define command{
-
        command_name check_tomcat
-
-       command_line /usr/bin/perl /usr/lib/nagios/plugins/check_tomcat -H $HOSTADDRESS$ -p $ARG1$ -l $ARG2$ -a $ARG3$ 
-       -w $ARG4$ -c $ARG5$
-       
-       }
-```
+       command_line /usr/bin/perl /usr/lib/nagios/plugins/check_tomcat -H $HOSTADDRESS$ -p $ARG1$ -l $ARG2$ -a $ARG3$ -w $ARG4$ -c $ARG5$
+}
+{% endhighlight %}
 
 Third, add the following service definition in the host that you want to check if Tomcat is running. In our case we will use localhost. Replace localhost with your desired host.
 
-```
+{% highlight ruby %}
 # Define a service to check the state of a Tomcat service
 define service{
        use                  generic-service
@@ -38,7 +33,7 @@ define service{
        service_description  Tomcat
        check_command        check_tomcat!8080!tomcat_username!tomcat_password!25%,25%!10%,10%
 }
-```
+{% endhighlight %}
 
 Finally, restart nagios using
 
