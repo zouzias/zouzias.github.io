@@ -17,9 +17,14 @@ Second, append the following lines in the file /etc/nagios3/command.cfg
 
 ```
 # check_tomcat command definition
+
 define command{
+
        command_name check_tomcat
-       command_line /usr/bin/perl /usr/lib/nagios/plugins/check_tomcat -H $HOSTADDRESS$ -p $ARG1$ -l $ARG2$ -a $ARG3$ -w $ARG4$ -c $ARG5$
+
+       command_line /usr/bin/perl /usr/lib/nagios/plugins/check_tomcat -H $HOSTADDRESS$ -p $ARG1$ -l $ARG2$ -a $ARG3$ 
+       -w $ARG4$ -c $ARG5$
+       
        }
 ```
 
