@@ -1,15 +1,17 @@
 ---
 layout: post
-title: Configure Tomcat Plugin in Nagios
+title: Configure Tomcat's Plugin in Nagios (Ubuntu)
 ---
 
-In this post, we will discuss how to monitor Apache Tomcat 7 using Nagios on Ubuntu 14.04. We will assume that nagios server has been configured as described in the following guide:
+In this post, we will discuss how to monitor Apache Tomcat 7 using Nagios on Ubuntu 14.04. 
+
+We assume that nagios server has been configured on the address `nagios.your_host_name.com` as described in the following guide:
 
 [Nagios on Ubuntu](https://help.ubuntu.com/lts/serverguide/nagios.html)
 
-First, download the [Tomcat plugin](http://exchange.nagios.org/directory/Plugins/Java-Applications-and-Servers/Apache-Tomcat/check_tomcat-2Epl/details) into `/usr/lib/nagios/plugins/` directory. You should also see all other plugins there. Rename the plugin from `check_tomcat.pl` to `check_tomcat`.
+First, download the [Tomcat plugin](http://exchange.nagios.org/directory/Plugins/Java-Applications-and-Servers/Apache-Tomcat/check_tomcat-2Epl/details) into `/usr/lib/nagios/plugins/` directory (into your nagios server). You should also see all other plugins there. Rename the plugin from `check_tomcat.pl` to `check_tomcat`.
 
-Just to be on the safe side, install a XML dependency that is used by the plugin using 
+Just to be on the safe side, install a XML dependency that is used by the tomcat plugin using 
 
 ```sudo apt-get install libxml-xpath-perl```
 
@@ -19,7 +21,8 @@ Second, append the following lines in the file /etc/nagios3/command.cfg
 # check_tomcat command definition
 define command{
        command_name check_tomcat
-       command_line /usr/bin/perl /usr/lib/nagios/plugins/check_tomcat -H $HOSTADDRESS$ -p $ARG1$ -l $ARG2$ -a $ARG3$ -w $ARG4$ -c $ARG5$
+       command_line /usr/bin/perl /usr/lib/nagios/plugins/check_tomcat -H $HOSTADDRESS$ 
+       -p $ARG1$ -l $ARG2$ -a $ARG3$ -w $ARG4$ -c $ARG5$
 }
 {% endhighlight %}
 
