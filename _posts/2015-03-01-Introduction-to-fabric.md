@@ -1,9 +1,9 @@
 ---
 layout: post
-title: DevOps- Introduction to Fabric.
+title: "DevOps: Introduction to Fabric."
 ---
 
-In this post, we will introduce [Fabric](http://www.fabfile.org/). Fabric is simple, yet powerful, tool for remotely controlling a farm of servers from your laptop.
+In this post, we will introduce [Fabric](http://www.fabfile.org/). Fabric is a simple, yet powerful, tool for remotely controlling a farm of servers from your terminal.
 
 As a warmup example, let's assume that you want to check the uptime of a list of servers, say server1.example.com, server2.example.com, ..., serverN.example.com. 
 
@@ -19,11 +19,14 @@ done
 
 {% endhighlight %}
 
+A curious reader might ask why to use fabric or any other tool for the above operation? An answer to this question is that fabric focuses on what are the operations to be performed on the servers whereas the above script has to be also concerned of `how` the tasks will be executed. For example, how would you run the above `for loop` in parallel? Using fabric is quite simple, see for example [parallel fabric](http://docs.fabfile.org/en/latest/usage/parallel.html).
+
+Next, we describe how to install fabric and then how to configure it for the above uptime task.
 
 
 ### Installing Fabric
 
-To install fabric, you first need to ensure that you have Python installed, and also install [python-pip](https://pip.pypa.io/en/latest/installing.html). Then, to instal fabric simply do
+To install fabric, you first need to ensure that you have Python installed, and also install [python pip](https://pip.pypa.io/en/latest/installing.html). Then, to instal fabric simply do
 
 {% highlight bash %}
 sudo pip install fabric
@@ -31,7 +34,7 @@ sudo pip install fabric
 
 ### Configuring Fabric
 
-Configure fabric is straightforward. Simply create a `fabfile.py` in you current directory with the following content.
+Configure fabric is straightforward. Simply create a `fabfile.py` in you current directory with the following content. Also create a `server.txt` with its i-th line equal to server{i}.example.com.
 
 {% highlight python %}
 from fabric.api import env
@@ -58,5 +61,11 @@ To run fabric, simply do
 fab uptime
 {% endhighlight %}
 
+To execute fabric in parallel, you can simple do
 
+{% highlight bash %}
+fab uptime -P
+{% endhighlight %}
+
+See [parallel fabric](http://docs.fabfile.org/en/latest/usage/parallel.html) for more details on parallel execution.
 
