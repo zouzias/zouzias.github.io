@@ -1,6 +1,9 @@
 ---
 layout: post
 title: "Elasticsearch: Unassigned Shards Problem"
+tags:
+- elasticsearch
+- lucene
 ---
 
 During index creation in some cases elasticsearch fails to assign properly its shards. Usually, this issue arises when the cluster runs out of space. If it happens to run your cluster in production, you might want to force elasticsearch to reassign its shards, execute the following command on every node of the cluster.

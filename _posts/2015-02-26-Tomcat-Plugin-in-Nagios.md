@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Configure Tomcat's Plugin in Nagios (Ubuntu)
+tags:
+- nagios
+- devops
+- web
 ---
 
 In this post, we will discuss how to monitor Apache Tomcat 7 using Nagios on Ubuntu 14.04. 

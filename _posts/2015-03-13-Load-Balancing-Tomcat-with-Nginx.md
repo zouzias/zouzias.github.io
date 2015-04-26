@@ -1,6 +1,10 @@
 ---
 layout: post
 title: Load Balancing Apache Tomcat using Nginx.
+tags:
+- tomcat
+- nginx
+- web
 ---
 
 In this post, we will configure [Nginx Server](http://http://nginx.org//) as a load balancer for Apache Tomcat. First, 
