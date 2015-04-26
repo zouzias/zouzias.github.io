@@ -1,6 +1,9 @@
 ---
 layout: post
 title: "DevOps: Introduction to Fabric."
+tags:
+- fabric
+- devops
 ---
 
 In this post, we will introduce [Fabric](http://www.fabfile.org/).

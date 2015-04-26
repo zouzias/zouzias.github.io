@@ -281,3 +281,31 @@ footer {
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "_highlights";
+
+
+// Tags CSS
+
+li{margin:0 0 0 20px;padding:0;}
+article li:last-child{padding-bottom:20px;}
+article li li:last-child{padding: 0;}
+ol li{list-style:decimal}
+ol ol li{list-style:upper-alpha;}
+ul li{list-style:disc;}
+ul.tags li{border-left:1px solid #ccc;display:inline;list-style:none;margin:0;padding:0 8px;position:relative;}
+ul.tags li:first-child{border:0;padding-left:0}
+ul ul li{list-style:circle;}
+li.archive_list{list-style:none;margin:0;padding-bottom:10px;}
+li.inline{display:inline}
+li.nav_list_item{display:inline-block;font-size:18px;margin:0;position:relative;width:90px;}
+li.tag_list_item{line-height:1;list-style:none;margin:0;}
+
+
+ul.tag_list_in_post{border-left:1px solid #bbb;display:inline;margin-left:15px;padding:0 0 0 10px;}
+  #main_content ul.tag_list_in_post{padding-bottom:0}
+ul.tags{float:right;width:280px}
+ul.tag_list{margin-left:52px;padding-bottom:20px;}
+
+
+a.tag_list_link{border-left: 1px solid #ccc;color:#888;font-size:14px;font-variant:small-caps;margin:0;padding: 0 6px;text-transform:lowercase;}
+a.tag_list_link:first-child{border:0}
+a.tag_list_link:hover{color:#444;}
