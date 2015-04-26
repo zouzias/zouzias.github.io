@@ -9,7 +9,9 @@ We assume that nagios server has been configured on the address `nagios.your_hos
 
 [Nagios on Ubuntu](https://help.ubuntu.com/lts/serverguide/nagios.html)
 
-First, download the [Tomcat plugin](http://exchange.nagios.org/directory/Plugins/Java-Applications-and-Servers/Apache-Tomcat/check_tomcat-2Epl/details) into `/usr/lib/nagios/plugins/` directory (into your nagios server). You should also see all other plugins there. Rename the plugin from `check_tomcat.pl` to `check_tomcat`.
+First, download the [Tomcat plugin](http://exchange.nagios.org/directory/Plugins/Java-Applications-and-Servers/Apache-Tomcat/check_tomcat-2Epl/details) into `/usr/lib/nagios/plugins/` directory (into your nagios server). You should also see all other plugins in the `/plugins` directory.
+
+Rename the plugin from `check_tomcat.pl` to `check_tomcat`.
 
 Just to be on the safe side, install a XML dependency that is used by the tomcat plugin using 
 
@@ -44,4 +46,4 @@ Finally, restart nagios using
 sudo service nagios3 restart
 ```
 
-Wait 5 minutes and then Nagios's web interfacet.
+Wait 5 minutes and then check Nagios's web interface.
