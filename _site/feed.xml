@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>The geeky Argonaut</title>
+    <description>Experiences on software craftmanship</description>
+    <link>http://zouzias.github.io</link>
+    <atom:link href="http://zouzias.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Elasticsearch: Unassigned Shards Problem</title>
+        <description>&lt;p&gt;During index creation in some cases elasticsearch fails to assign properly its shards. Usually, this issue arises when the cluster runs out of space. If it happens to run your cluster in production, you might want to force elasticsearch to reassign its shards, execute the following command on every node of the cluster.&lt;/p&gt;
+
+&lt;p&gt;First, you should make sure that your cluster has enough space to perform the shard reassignment (&amp;gt;10% free space). To do so, you should free up some space by deleting unecessary indices or files.&lt;/p&gt;
+
+&lt;p&gt;Second, you can force elasticsearch to perform the reassignment of the shards by the following command.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;HOSTS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;server1.example.com,server2.example.com,...,serverN.example.com
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; HOST in HOSTS
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+	&lt;span class=&quot;c&quot;&gt;# v1.0+&lt;/span&gt;
+    curl -XPUT &lt;span class=&quot;s1&quot;&gt;&amp;#39;${HOST}:9200/_settings&amp;#39;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+    -d &lt;span class=&quot;s1&quot;&gt;&amp;#39;{&amp;quot;index.routing.allocation.disable_allocation&amp;quot;: false}&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;If the above command fails, check the logs. If you see a similar log as the one below you might need to free up more space.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;[2015-03-17 17:27:05,694][WARN ][cluster.routing.allocation.decider] [es1-dev-strong-es-01] 
+After allocating, node [Ym_7Q-4pTJOZIztpmQLDuQ] 
+would have less than the required 10.0% free disk threshold (8.396659874772283% free),&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;The above has been tested under elasticsearch v.1.3.7.&lt;/p&gt;
+
+&lt;h3 id=&quot;references&quot;&gt;References&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://stackoverflow.com/questions/19967472/elasticsearch-unassigned-shards-how-to-fix&quot;&gt;Stackoverflow&lt;/a&gt; for more discussion on this issue.&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        <pubDate>Wed, 18 Mar 2015 00:00:00 +0100</pubDate>
+        <link>http://zouzias.github.io/Elasticsearch-Unassigned-Shards-Problem/</link>
+        <guid isPermaLink="true">http://zouzias.github.io/Elasticsearch-Unassigned-Shards-Problem/</guid>
+      </item>
+    
+      <item>
+        <title>Load Balancing Apache Tomcat using Nginx.</title>
+        <description>&lt;p&gt;In this post, we will configure &lt;a href=&quot;http://http://nginx.org//&quot;&gt;Nginx Server&lt;/a&gt; as a load balancer for Apache Tomcat. First, 
+we will provide the configuration of nginx for proxying a single Apache Tomcat instance. Later, we will show how this configuration can be extended for load-balancing a set of Apache Tomcat Servers.&lt;/p&gt;
+
+&lt;p&gt;In your nginx server, populate the &lt;code&gt;/etc/nginx/sites-available/default&lt;/code&gt; file with the following content (here we use Ubuntu 14.04).&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;server {
+    listen nginx.example.com:80;
+    server_name  nginx.example.com;
+
+    location / {
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Server $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_pass http://tomcat.example.com:8080/;
+    }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Reload the above configuration file with &lt;code&gt;sudo service nginx reload&lt;/code&gt;, you should see something like&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-text&quot; data-lang=&quot;text&quot;&gt;* Reloading nginx configuration nginx                                   [ OK ]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Then, hit &lt;code&gt;http://nginx.example.com&lt;/code&gt; in your browser. You should see the default Apache Tomcat webpage.&lt;/p&gt;
+
+&lt;p&gt;Sources:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.mkyong.com/nginx/nginx-apache-tomcat-configuration-example/&quot;&gt;Mkyong&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Add more&lt;/p&gt;
+</description>
+        <pubDate>Fri, 13 Mar 2015 00:00:00 +0100</pubDate>
+        <link>http://zouzias.github.io/Load-Balancing-Tomcat-with-Nginx/</link>
+        <guid isPermaLink="true">http://zouzias.github.io/Load-Balancing-Tomcat-with-Nginx/</guid>
+      </item>
+    
+      <item>
+        <title>DevOps: Introduction to Fabric.</title>
+        <description>&lt;p&gt;In this post, we will introduce &lt;a href=&quot;http://www.fabfile.org/&quot;&gt;Fabric&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Fabric is a simple, yet powerful, tool for remotely controlling a farm of servers from your terminal.&lt;/p&gt;
+
+&lt;p&gt;As a warmup example, let’s assume that you want to check the uptime of a list of servers, say server1.example.com, server2.example.com, …, serverN.example.com. &lt;/p&gt;
+
+&lt;p&gt;Of course, you can always write a bash script as the one below to do so,&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;HOSTS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;server1.example.com,server2.example.com,...,serverN.example.com
+
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; HOST in HOSTS
+&lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
+    ssh -i ~/.ssh/example_rsa @&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;USER&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;@HOST -s &lt;span class=&quot;s1&quot;&gt;&amp;#39;uptime&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;A curious reader might ask &lt;strong&gt;why&lt;/strong&gt; to bother using fabric or any other tool for the above operation?&lt;/p&gt;
+
+&lt;p&gt;An answer to this question is that fabric focuses on &lt;strong&gt;what&lt;/strong&gt; are the operations to be performed on the servers whereas the above script has to be also concerned of &lt;i&gt;how&lt;/i&gt; the tasks will be executed. For example, how would you run the above &lt;code&gt;for loop&lt;/code&gt; in parallel? Using fabric is quite simple, see &lt;a href=&quot;http://docs.fabfile.org/en/latest/usage/parallel.html&quot;&gt;parallel fabric&lt;/a&gt; for more details.&lt;/p&gt;
+
+&lt;p&gt;Next, we describe how to install fabric and then how to configure it for the above uptime task.&lt;/p&gt;
+
+&lt;h3 id=&quot;installing-fabric&quot;&gt;Installing Fabric&lt;/h3&gt;
+
+&lt;p&gt;To install fabric, you first need to ensure that you have Python installed, and also install &lt;a href=&quot;https://pip.pypa.io/en/latest/installing.html&quot;&gt;python pip&lt;/a&gt;. Then, to instal fabric simply do&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;sudo pip install fabric&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;configuring-fabric&quot;&gt;Configuring Fabric&lt;/h3&gt;
+
+&lt;p&gt;Configure fabric is straightforward. Simply create a &lt;code&gt;fabfile.py&lt;/code&gt; in you current directory with the following content. Also create a &lt;code&gt;server.txt&lt;/code&gt; with its i-th line equal to &lt;code&gt;server{i}.example.com&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;fabric.api&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;fabric.operations&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;put&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sudo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;local&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Setup username and its RSA key&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;ubuntu&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key_filename&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&amp;#39;~/.ssh/example_rsa&amp;#39;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Populate host names &lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;with&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;servers.txt&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;hosts&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;readlines&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;uptime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;#39;uptime&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;running-fabric&quot;&gt;Running Fabric&lt;/h3&gt;
+
+&lt;p&gt;To run fabric, simply do &lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;fab uptime&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;To execute fabric in parallel, you can simple do&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;fab uptime -P&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;See &lt;a href=&quot;http://docs.fabfile.org/en/latest/usage/parallel.html&quot;&gt;parallel fabric&lt;/a&gt; for more details on parallel execution.&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 01 Mar 2015 00:00:00 +0100</pubDate>
+        <link>http://zouzias.github.io/Introduction-to-fabric/</link>
+        <guid isPermaLink="true">http://zouzias.github.io/Introduction-to-fabric/</guid>
+      </item>
+    
+      <item>
+        <title>Configure Tomcat&#39;s Plugin in Nagios (Ubuntu)</title>
+        <description>&lt;p&gt;In this post, we will discuss how to monitor Apache Tomcat 7 using Nagios on Ubuntu 14.04. &lt;/p&gt;
+
+&lt;p&gt;We assume that nagios server has been configured on the address &lt;code&gt;nagios.your_host_name.com&lt;/code&gt; as described in the following guide:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://help.ubuntu.com/lts/serverguide/nagios.html&quot;&gt;Nagios on Ubuntu&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;First, download the &lt;a href=&quot;http://exchange.nagios.org/directory/Plugins/Java-Applications-and-Servers/Apache-Tomcat/check_tomcat-2Epl/details&quot;&gt;Tomcat plugin&lt;/a&gt; into &lt;code&gt;/usr/lib/nagios/plugins/&lt;/code&gt; directory (into your nagios server). You should also see all other plugins in the &lt;code&gt;/plugins&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;Rename the plugin from &lt;code&gt;check_tomcat.pl&lt;/code&gt; to &lt;code&gt;check_tomcat&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Just to be on the safe side, install a XML dependency that is used by the tomcat plugin using &lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;sudo apt-get install libxml-xpath-perl&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Second, append the following lines in the file /etc/nagios3/command.cfg&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# check_tomcat command definition&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;command_name&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;check_tomcat&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;command_line&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/usr/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;bin&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;perl&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/usr/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lib&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nagios&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;check_tomcat&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;H&lt;/span&gt; &lt;span class=&quot;vg&quot;&gt;$HOSTADDRESS&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt; 
+       &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;vg&quot;&gt;$ARG1&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt; &lt;span class=&quot;vg&quot;&gt;$ARG2&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;vg&quot;&gt;$ARG3&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;w&lt;/span&gt; &lt;span class=&quot;vg&quot;&gt;$ARG4&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;vg&quot;&gt;$ARG5&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Third, add the following service definition in the host that you want to check if Tomcat is running. In our case we will use localhost. Replace localhost with your desired host.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;c1&quot;&gt;# Define a service to check the state of a Tomcat service&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;define&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;service&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;use&lt;/span&gt;                  &lt;span class=&quot;n&quot;&gt;generic&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;service&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;host_name&lt;/span&gt;            &lt;span class=&quot;n&quot;&gt;localhost&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;service_description&lt;/span&gt;  &lt;span class=&quot;no&quot;&gt;Tomcat&lt;/span&gt;
+       &lt;span class=&quot;n&quot;&gt;check_command&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;check_tomcat!&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8080&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tomcat_username!tomcat_password!&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;25&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;%,25%!10%,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;%&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;Finally, restart nagios using&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;
+sudo service nagios3 restart
+&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Wait 5 minutes and then check Nagios’s web interface.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 26 Feb 2015 00:00:00 +0100</pubDate>
+        <link>http://zouzias.github.io/Tomcat-Plugin-in-Nagios/</link>
+        <guid isPermaLink="true">http://zouzias.github.io/Tomcat-Plugin-in-Nagios/</guid>
+      </item>
+    
+      <item>
+        <title>We&#39;re up and running!</title>
+        <description>&lt;p&gt;This is the first post. The current blog runs on github pages using Jekyll. It has been bootstrapped using &lt;a href=&quot;https://github.com/barryclark/jekyll-now&quot;&gt;Jekyll Now repository&lt;/a&gt; on GitHub.&lt;/p&gt;
+
+&lt;p&gt;Pretty cool, no DBs, plugins, etc like in Wordpress. Also no worries for backups :-)&lt;/p&gt;
+</description>
+        <pubDate>Thu, 25 Dec 2014 00:00:00 +0100</pubDate>
+        <link>http://zouzias.github.io/Hello-World/</link>
+        <guid isPermaLink="true">http://zouzias.github.io/Hello-World/</guid>
+      </item>
+    
+  </channel>
+</rss>
