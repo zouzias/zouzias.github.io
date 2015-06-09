@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
-    <title>Posts Tagged &ldquo;tomcat&rdquo; – The geeky Argonaut – Experiences on software craftmanship</title>
+    <title>Hello World in Apache Spark – The geeky Argonaut – Experiences on software craftmanship</title>
 
     <meta name="author" content="The geeky Argonaut" />
     <meta name="description" content="Experiences on software craftmanship">
@@ -41,71 +41,54 @@
     </div>
 
     <div id="main" role="main" class="container">
-      <h2 class="post_title">Posts Tagged &ldquo;tomcat&rdquo;</h2>
-<ul>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <li class="archive_list">
-    <time style="color:#666;font-size:11px;" datetime='2015-03-13'>03/13/15</time> <a class="archive_list_article_link" href='/Load-Balancing-Tomcat-with-Nginx/'>Load Balancing Apache Tomcat using Nginx.</a>
-    <p class="summary">
-    <ul class="tag_list">
-      
-      <li class="inline archive_list"><a class="tag_list_link" href="/tag/tomcat">tomcat</a></li>
-      
-      <li class="inline archive_list"><a class="tag_list_link" href="/tag/nginx">nginx</a></li>
-      
-      <li class="inline archive_list"><a class="tag_list_link" href="/tag/web">web</a></li>
-      
-    </ul>
-  </li>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</ul>
+      <article class="post">
+  <h1>Hello World in Apache Spark</h1>
 
+  <div class="tags">
+ 	<div class="meta_wrapper"><time datetime="2015-06-09">June  9, 2015</time><ul class="tag_list_in_post"><li class="inline tag_list_item"><a class="tag_list_link" href="/tag/spark">spark</a></li><li class="inline tag_list_item"><a class="tag_list_link" href="/tag/scala">scala</a></li><li class="inline tag_list_item"><a class="tag_list_link" href="/tag/bigdata">bigdata</a></li></ul></div>
+
+  </div>
+
+  <div class="entry">
+    <p>In this post, we present a hello world application in <a href="https://spark.apache.org/">Apache Spark</a>.</p>
+
+<p>Spark is a general engine for large-scal data processing. The main differenting factor compared to the map-reduce framework is it’s ability to cache intermediate results in-memory.</p>
+
+<h3 id="install-scala-and-sbt">Install Scala and SBT</h3>
+
+<p>First, install <a href="http://www.scala-lang.org/download/install.html">Scala</a> and <a href="http://www.scala-sbt.org/release/tutorial/Setup.html">SBT</a> first.</p>
+
+<h3 id="download-apache-spark">Download Apache Spark</h3>
+
+<p>Download spark from <a href="https://spark.apache.org/downloads.html">here</a>. Uncompress the contents to a directory and set up the enviroment variable SPARK_HOME to the extracted contents.</p>
+
+<p>The source code is available on <a href="https://github.com/zouzias/spark-hello-world">github</a></p>
+
+<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">object</span> <span class="nc">HelloWorld</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">main</span><span class="o">(</span><span class="n">args</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[</span><span class="kt">String</span><span class="o">])</span> <span class="o">{</span>
+
+    <span class="c1">// initialise spark context</span>
+    <span class="k">val</span> <span class="n">conf</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkConf</span><span class="o">().</span><span class="n">setAppName</span><span class="o">(</span><span class="s">&quot;HelloWorld&quot;</span><span class="o">)</span>
+    <span class="k">val</span> <span class="n">sc</span> <span class="k">=</span> <span class="k">new</span> <span class="nc">SparkContext</span><span class="o">(</span><span class="n">conf</span><span class="o">)</span>
+
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;************&quot;</span><span class="o">)</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="o">)</span>
+    <span class="n">println</span><span class="o">(</span><span class="s">&quot;************&quot;</span><span class="o">)</span>
+
+    <span class="c1">// terminate spark context</span>
+    <span class="n">sc</span><span class="o">.</span><span class="n">stop</span><span class="o">()</span>
+  <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+
+  </div>
+
+  <div class="date">
+    Written on June  9, 2015
+  </div>
+
+  
+</article>
 
     </div>
 

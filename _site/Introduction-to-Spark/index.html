@@ -5,7 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
 
-    <title>Posts Tagged &ldquo;tomcat&rdquo; – The geeky Argonaut – Experiences on software craftmanship</title>
+    <title>Introduction to Spark – The geeky Argonaut – Experiences on software craftmanship</title>
 
     <meta name="author" content="The geeky Argonaut" />
     <meta name="description" content="Experiences on software craftmanship">
@@ -41,71 +41,50 @@
     </div>
 
     <div id="main" role="main" class="container">
-      <h2 class="post_title">Posts Tagged &ldquo;tomcat&rdquo;</h2>
-<ul>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  <li class="archive_list">
-    <time style="color:#666;font-size:11px;" datetime='2015-03-13'>03/13/15</time> <a class="archive_list_article_link" href='/Load-Balancing-Tomcat-with-Nginx/'>Load Balancing Apache Tomcat using Nginx.</a>
-    <p class="summary">
-    <ul class="tag_list">
-      
-      <li class="inline archive_list"><a class="tag_list_link" href="/tag/tomcat">tomcat</a></li>
-      
-      <li class="inline archive_list"><a class="tag_list_link" href="/tag/nginx">nginx</a></li>
-      
-      <li class="inline archive_list"><a class="tag_list_link" href="/tag/web">web</a></li>
-      
-    </ul>
-  </li>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</ul>
+      <article class="post">
+  <h1>Introduction to Spark</h1>
 
+  <div class="tags">
+ 	<div class="meta_wrapper"><time datetime="2015-05-31">May 31, 2015</time><ul class="tag_list_in_post"><li class="inline tag_list_item"><a class="tag_list_link" href="/tag/spark">spark</a></li><li class="inline tag_list_item"><a class="tag_list_link" href="/tag/scala">scala</a></li><li class="inline tag_list_item"><a class="tag_list_link" href="/tag/bigdata">bigdata</a></li></ul></div>
+
+  </div>
+
+  <div class="entry">
+    <p>In this post, we will briefly introduce Apache <a href="https://spark.apache.org/">Spark</a>.</p>
+
+<p>Spark is a general engine for large-scal data processing. The main differenting factor compared to the map-reduce framework is it’s ability to cache intermediate results in-memory.</p>
+
+<p>To start with Spark, simply download a pre-compiled version from the above site and type <code>bin/spark-shell</code>.</p>
+
+<p>Spark main abstraction is called RDD (Resilient Distributed Datasets).</p>
+
+<p>Below we summarize most of the available operations/transformation of an RDD.</p>
+
+<h3 id="rdd-input">RDD Input</h3>
+
+<h3 id="rdd-inspection-operations">RDD Inspection Operations</h3>
+
+<h3 id="rdd-operations">RDD Operations</h3>
+
+<p>There are several operation available on RDD from which we only highlight the most commonly used ones, i.e, <code>map</code>, <code>reduce</code>, <code>reduceByKey</code>, <code>filter</code>, <code>groupBy</code>, <code>join</code>.</p>
+
+<div class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">a</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">((</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">),</span> <span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">4</span><span class="o">),</span> <span class="o">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">5</span><span class="o">))</span>
+<span class="n">a</span><span class="k">:</span> <span class="kt">Array</span><span class="o">[(</span><span class="kt">Int</span>, <span class="kt">Int</span><span class="o">)]</span> <span class="k">=</span> <span class="nc">Array</span><span class="o">((</span><span class="mi">1</span><span class="o">,</span><span class="mi">2</span><span class="o">),</span> <span class="o">(</span><span class="mi">2</span><span class="o">,</span><span class="mi">4</span><span class="o">),</span> <span class="o">(</span><span class="mi">3</span><span class="o">,</span><span class="mi">5</span><span class="o">))</span>
+
+<span class="k">val</span> <span class="n">aRDD</span> <span class="k">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">makeRDD</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
+<span class="n">aRDD</span><span class="k">:</span> <span class="kt">org.apache.spark.rdd.RDD</span><span class="o">[(</span><span class="kt">Int</span>, <span class="kt">Int</span><span class="o">)]</span> <span class="k">=</span> <span class="nc">ParallelCollectionRDD</span><span class="o">[</span><span class="err">0</span><span class="o">]</span> <span class="n">at</span> <span class="n">makeRDD</span> <span class="n">at</span> <span class="o">&lt;</span><span class="n">console</span><span class="k">&gt;:</span><span class="mi">23</span></code></pre></div>
+
+<h3 id="rdd-output">RDD Output</h3>
+
+
+  </div>
+
+  <div class="date">
+    Written on May 31, 2015
+  </div>
+
+  
+</article>
 
     </div>
 
