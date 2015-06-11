@@ -45,6 +45,6 @@ s3cmd get --add-header="x-amz-request-payer: requester" s3://arxiv/src/
 
 Similary, to download all pdfs type
 
-% highlight bash %}
+{% highlight bash %}
 s3cmd get --add-header="x-amz-request-payer: requester" s3://arxiv/pdf/
 {% endhighlight %}
