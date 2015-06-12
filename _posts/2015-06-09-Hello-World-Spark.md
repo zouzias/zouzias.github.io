@@ -13,11 +13,11 @@ Spark is a general engine for large-scal data processing. The main differenting 
 
 ### Install Scala and SBT
 
-First, install [Scala](http://www.scala-lang.org/download/install.html) and [SBT](http://www.scala-sbt.org/release/tutorial/Setup.html) first.
+First, install [Scala](http://www.scala-lang.org/download/install.html) and [SBT](http://www.scala-sbt.org/release/tutorial/Setup.html).
 
 ### Download Apache Spark
 
-Download spark from [here](https://spark.apache.org/downloads.html). Uncompress the contents to a directory and set up the enviroment variable SPARK_HOME to the extracted contents.
+Download spark from [here](https://spark.apache.org/downloads.html). Uncompress the contents to a directory and set up the environment variable SPARK_HOME to the extracted contents.
 
 
 The source code is available on [github](https://github.com/zouzias/spark-hello-world)

@@ -7,7 +7,7 @@ tags:
 - web
 ---
 
-In this post, we will discuss how to monitor Apache Tomcat 7 using Nagios on Ubuntu 14.04. 
+In this post, we will discuss how to monitor Apache Tomcat 7 using Nagios on Ubuntu 14.04.
 
 We assume that nagios server has been configured on the address `nagios.your_host_name.com` as described in the following guide:
 
@@ -17,7 +17,7 @@ First, download the [Tomcat plugin](http://exchange.nagios.org/directory/Plugins
 
 Rename the plugin from `check_tomcat.pl` to `check_tomcat`.
 
-Just to be on the safe side, install a XML dependency that is used by the tomcat plugin using 
+Just to be on the safe side, install a XML dependency that is used by the tomcat plugin using
 
 ```sudo apt-get install libxml-xpath-perl```
 
@@ -27,7 +27,7 @@ Second, append the following lines in the file /etc/nagios3/command.cfg
 # check_tomcat command definition
 define command{
        command_name check_tomcat
-       command_line /usr/bin/perl /usr/lib/nagios/plugins/check_tomcat -H $HOSTADDRESS$ 
+       command_line /usr/bin/perl /usr/lib/nagios/plugins/check_tomcat -H $HOSTADDRESS$
        -p $ARG1$ -l $ARG2$ -a $ARG3$ -w $ARG4$ -c $ARG5$
 }
 {% endhighlight %}
