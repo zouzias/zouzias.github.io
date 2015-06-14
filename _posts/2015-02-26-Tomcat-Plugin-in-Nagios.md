@@ -7,7 +7,7 @@ tags:
 - web
 ---
 
-In this post, we will discuss how to monitor Apache Tomcat 7 using Nagios on Ubuntu 14.04.
+In this post, we discuss how to monitor Apache Tomcat 7 using Nagios on Ubuntu 14.04.
 
 We assume that nagios server has been configured on the address `nagios.your_host_name.com` as described in the following guide:
 

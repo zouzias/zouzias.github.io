@@ -7,7 +7,7 @@ tags:
 - bigdata
 ---
 
-In this post, we demonstrate step-by-step how to download all papers from [ArXiv](). ArXiv is an open access repository in which researchers share their manuscripts before submission to a conference or journal.
+In this post, we demonstrate step-by-step how to download all papers from [ArXiv](). ArXiv is an open access repository in which researchers share their manuscripts before their publication to a conference or journal.
 
 The arXiv dataset is available on Amazon's S3 cloud storage and it is not freely available. As of the date of this post, the cost is around 50$.
 
