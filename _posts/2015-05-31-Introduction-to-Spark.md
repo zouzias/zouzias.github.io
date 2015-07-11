@@ -9,13 +9,15 @@ tags:
 
 In this post, we will briefly introduce Apache [Spark](https://spark.apache.org/).
 
-Spark is a general engine for large-scal data processing. The main differentiating factor compared to the map-reduce framework is it's ability to cache intermediate results in-memory.
+Spark is a general engine for large-scal data processing. The main differenting factor compared to the map-reduce framework is it's ability to cache intermediate results in-memory.
+
 
 To start with Spark, simply download a pre-compiled version from the above site and type `bin/spark-shell`.
 
 Spark main abstraction is called RDD (Resilient Distributed Datasets).
 
 Below we summarize most of the available operations/transformation of an RDD.
+
 
 {% highlight scala %}
 
@@ -26,6 +28,12 @@ Below we summarize most of the available operations/transformation of an RDD.
 
 
 ### RDD Inspection Operations
+
+The following are a few operations that are helpful to inspect the elements of an RDD
+
+aRDD.first() 	:	get the first element of an RDD
+aRDD.take(10)   :   take 10 elements
+aRDD.sample()   :   sample elements from RDD
 
 ### RDD Operations
 
@@ -44,4 +52,8 @@ aRDD: org.apache.spark.rdd.RDD[(Int, Int)] = ParallelCollectionRDD[0] at makeRDD
 
 
 
+
+
+
 ### RDD Output
+
