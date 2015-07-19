@@ -11,6 +11,10 @@ tags:
 
 In this post, we will introduce [Grunt](http://gruntjs.com/). Grunt is a tool that helps web developers to automate the web development process. Here we focus on javascript code minification, concatenation and code quality check ([JShint](https://en.wikipedia.org/wiki/JSHint)).
 
+### Source code
+
+The source code is available at [GitHub](https://github.com/zouzias/grunt-examples).
+
 ## Install NodeJS and Grunt
 
 First, you need to install [nodejs](https://nodejs.org/). Nodes ships with npm which is a module manager for nodejs applications.
@@ -25,7 +29,7 @@ The `-g` option tells npm to install grunt and grunt command line interface (gru
 
 ### Minifying Javascript code
 
-First, we describe a simple grunt example that minifies Javascript. We use the `grunt-contrib-uglify` task for this task.
+First, we describe a simple grunt example that minifies Javascript. We use the `grunt-contrib-uglify` task for this task. To install the uglify task in your local node modules, type `npm install grunt-contrib-uglify --save`.
 
 {% highlight javascript %}
 module.exports = function(grunt){
@@ -52,9 +56,13 @@ module.exports = function(grunt){
 }
 {% endhighlight %}
 
+With `grunt.loadNpmTasks("grunt-contrib-uglify");` we load the uglify task. Then, we initialize the task using `grunt.initConfig`. To run the uglify task on `src/utils`, type `grunt uglify:util`.
+
 ### JSHint, minify and concatenate a list of JS files
 
 A common task during web development is to check the quality of javascript code then concatenate all javascript files together and finally minify them as an `application.min.js`.
+
+To install the required node modules, type `npm install grunt-contrib-**task_name** --save` where ``**task_name**`` is `uglify/clean/concat/jshint`.
 
 {% highlight javascript %}
 module.exports = function(grunt){
@@ -106,8 +114,3 @@ module.exports = function(grunt){
 
 }
 {% endhighlight %}
-
-
-### Source code
-
-The source code is available at [GitHub](https://github.com/zouzias/grunt-examples).
