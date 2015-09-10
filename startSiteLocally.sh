@@ -1,5 +1,7 @@
 #!/bin/bash
 
-# Start the blog locally
+# Install all ruby deps
+bundle install
 
+# Start the blog locally
 bundle exec jekyll serve
