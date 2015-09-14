@@ -24,7 +24,7 @@ This is pretty straightfoward:
 
 {% highlight bash %}
 # Copy test.csv into HDFS
-hadoop fs -put /path/on/localsystem/test.csv /path/on/hdfs/file_name.csv
+hadoop fs -put /path/on/localsystem/data.csv /path/on/hdfs/data.csv
 {% endhighlight %}
 
 ### Create Hive Table
@@ -39,13 +39,13 @@ hive> CREATE TABLE example(name String, address String, price int)\
 
 The above command creates a table named example with fields 'name', 'address' and 'price'. Moreover, it defines the storage of the table as a text file whose rows are its records delimited by ',' and also commas escaped by '\\'.
 
-Moreover, note that the fields of example must have the same order as in `/path/on/hdfs/file_name.csv`
+Moreover, note that the fields of example must have the same order as in `/path/on/hdfs/data.csv`
 
 ### Load data into Hive Table
 
 To load data into table `example`, you simple type:
 {% highlight bash %}
-hive> LOAD DATA INPATH '/path/on/hdfs/file_name.csv' OVERWRITE INTO TABLE example;
+hive> LOAD DATA INPATH '/path/on/hdfs/data.csv' OVERWRITE INTO TABLE example;
 {% endhighlight %}
 
-Note that the above command will delete the file `/path/on/hdfs/file_name.csv`.
+Note that the above command will delete the file `/path/on/hdfs/data.csv`.
