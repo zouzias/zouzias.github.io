@@ -19,8 +19,7 @@ First, install [Scala](http://www.scala-lang.org/download/install.html) and [SBT
 
 Download spark from [here](https://spark.apache.org/downloads.html). Uncompress the contents to a directory and set up the environment variable SPARK_HOME to the extracted contents.
 
-The source code is available on [github](https://github.com/zouzias/spark-hello-world)
-
+The source code is available on [github](https://github.com/zouzias/spark-hello-world).
 
 {% highlight scala %}
 object HelloWorld {
