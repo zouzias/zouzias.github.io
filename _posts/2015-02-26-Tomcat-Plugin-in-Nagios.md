@@ -19,7 +19,9 @@ Rename the plugin from `check_tomcat.pl` to `check_tomcat`.
 
 Just to be on the safe side, install a XML dependency that is used by the tomcat plugin using
 
-```sudo apt-get install libxml-xpath-perl```
+{% highlight bash %}
+sudo apt-get install libxml-xpath-perl
+{% endhighlight %}
 
 Second, append the following lines in the file /etc/nagios3/command.cfg
 
