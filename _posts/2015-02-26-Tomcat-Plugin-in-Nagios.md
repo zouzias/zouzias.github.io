@@ -7,6 +7,7 @@ tags:
 - web
 - webserver
 - tomcat
+- ubuntu
 ---
 
 In this post, we demonstrate how to monitor Apache Tomcat 7 using Nagios on Ubuntu 14.04.
