@@ -38,7 +38,7 @@ Third, add the following service definition in the host that you want to check i
 define service{
        use                  generic-service
        host_name            es1.example.com
-       service_description  Tomcat
+       service_description  Elasticsearch
        check_command        check_elasticsearch
 }
 {% endhighlight %}
