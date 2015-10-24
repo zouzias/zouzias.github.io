@@ -9,11 +9,11 @@ tags:
 - ubuntu
 ---
 
-In this post, we demonstrate how to monitor an elasticsearch cluster and get notifications using Nagios on Ubuntu 14.04.
+In this post, we demonstrate how to monitor the status of an elasticsearch cluster using Nagios on Ubuntu 14.04.
 
 ## Nagios server setup
 
-We assume that nagios server has been configured on the address `nagios.your_host_name.com` as described in the following guide:
+We assume that a nagios server has been configured on the address `nagios.your_host_name.com` as described in the following guide:
 
 [Installing Nagios on Ubuntu](https://help.ubuntu.com/lts/serverguide/nagios.html)
 
@@ -50,3 +50,7 @@ sudo service nagios3 restart
 {% endhighlight %}
 
 Wait 5 minutes and then check Nagios's web interface, i.e., browse to `http://nagios.your_host_name.com/nagios3/`.
+
+## Related posts
+
+See also [Tomcat using Nagios]({% post_url 2015-02-26-Tomcat-Plugin-in-Nagios %})
