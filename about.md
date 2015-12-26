@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Hi there, my name is Anastasios Zouzias and I work as a researcher at [IBM Research Zurich](http://www.zurich.ibm.com/). I obtained my PhD from the [Computer Science department](http://web.cs.toronto.edu/) at the [University of Toronto](http://www.utoronto.ca/).
+Hi there, my name is Anastasios Zouzias and I work as a data scientist in the Mobility Insights team at [Swisscom](https://www.swisscom.ch). Before I was a researcher at [IBM Research Zurich](http://www.zurich.ibm.com/). I obtained my PhD from the [Computer Science department](http://web.cs.toronto.edu/) at the [University of Toronto](http://www.utoronto.ca/).
 
 ### Contact me
 
