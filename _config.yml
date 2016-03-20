@@ -11,6 +11,8 @@ description: Experiences on software craftmanship
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/zouzias/zouzias.github.io/master/images/argonaut.png
 
+#port: 4001
+
 #
 # Flags below are optional
 #
@@ -57,7 +59,7 @@ highlighter: pygments
 permalink: /:title/
 
 # The release of Jekyll Now that you're using
-version: v1.0.0
+version: v3.0.3
 
 # Set the Sass partials directory, as we're using @imports
 sass:
@@ -68,6 +70,7 @@ sass:
 gems:
   - jemoji # Emoji please!
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
+  - jekyll-paginate
 
 jekyll-archives:
   enabled: 'all'
