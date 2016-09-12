@@ -14,7 +14,7 @@ In this post, we show how to operate docker using Digitalocean's cloud provider.
 
 You need to have a digitalocean's account along with a access to token to create droplets.
 
-For more details, see [Installing Nagios on Ubuntu](https://help.ubuntu.com/lts/serverguide/nagios.html)
+For more details, see [Digitalocean](https://cloud.digitalocean.com/login)
 
 From now on, we assume that you have set your digitalocean access token to an environment variable as below:
 
