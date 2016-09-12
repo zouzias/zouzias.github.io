@@ -8,15 +8,13 @@ tags:
 - ubuntu
 ---
 
-In this post, we show how to operate docker using Digitalocean's cloud provider.
+In this post, we show how to operate docker using Digitalocean's cloud provider. With the introduction of `docker-machine` in the recent versions of Docker, spinning a new droplet with docker is a few bash command lines away.
 
 ## Requirements
 
-You need to have a digitalocean's account along with a access to token to create droplets.
+You need to have a digitalocean's account along with an access token to create droplets. For more details, see [Digitalocean website](https://cloud.digitalocean.com/login).
 
-For more details, see [Digitalocean](https://cloud.digitalocean.com/login)
-
-From now on, we assume that you have set your digitalocean access token to an environment variable as below:
+From now on, we assume that you have set your digitalocean access token that allows you to create a new droplet and it is set to an environment variable, i.e.,
 
 {% highlight bash %}
 export DIGOCEAN_TOKEN=XXXXXXXXXXX
