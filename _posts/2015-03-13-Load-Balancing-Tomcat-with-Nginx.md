@@ -5,9 +5,10 @@ tags:
 - tomcat
 - nginx
 - web
+- devops
 ---
 
-In this post, we will configure [Nginx Server](http://http://nginx.org//) as a load balancer for Apache Tomcat. First, 
+In this post, we will configure [Nginx Server](http://http://nginx.org//) as a load balancer for Apache Tomcat. First,
 we will provide the configuration of nginx for proxying a single Apache Tomcat instance. Later, we will show how this configuration can be extended for load-balancing a set of Apache Tomcat Servers.
 
 In your nginx server, populate the `/etc/nginx/sites-available/default` file with the following content (here we use Ubuntu 14.04).
@@ -29,7 +30,7 @@ server {
 Reload the above configuration file with `sudo service nginx reload`, you should see something like
 
 {% highlight text %}
- * Reloading nginx configuration nginx                                   [ OK ] 
+ * Reloading nginx configuration nginx                                   [ OK ]
 {% endhighlight %}
 
 

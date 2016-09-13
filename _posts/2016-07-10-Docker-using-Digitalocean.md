@@ -5,7 +5,7 @@ tags:
 - docker
 - digitalocean
 - web
-- ubuntu
+- devops
 ---
 
 In this post, we show how to operate docker using Digitalocean's cloud provider. With the introduction of `docker-machine` in the recent versions of Docker, spinning a new droplet with docker is a few bash command lines away.
