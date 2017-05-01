@@ -15,7 +15,7 @@ This post is a distillation of the following [page](http://arxiv.org/help/bulk_d
 
 ## Install python and s3cmd
 
-First, install [Python](). To access amazon's S3, we will use a forked version of [s3cmd]() which is available on [github](https://github.com/zouzias/s3cmd) and contains a patch for downloading the arXiv dataset, see also [here](http://arxiv.org/help/bulk_data_s3).
+First, install [Python](https://www.python.org). To access amazon's S3, we will use a forked version of [s3cmd]() which is available on [github](https://github.com/zouzias/s3cmd) and contains a patch for downloading the arXiv dataset, see also [here](http://arxiv.org/help/bulk_data_s3).
 
 ### Configure AWS to access S3
 
