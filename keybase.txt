@@ -1,0 +1,56 @@
+==================================================================
+https://keybase.io/zouzias
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.zouzias.org
+  * I am zouzias (https://keybase.io/zouzias) on keybase.
+  * I have a public key ASD5s6mtU_Xas0oIByPzMdlx1dBBDUkmPeEz0tmrWJs2rQo
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120f9b3a9ad53f5dab34a080723f331d971d5d0410d49263de133d2d9ab589b36ad0a",
+      "host": "keybase.io",
+      "kid": "0120f9b3a9ad53f5dab34a080723f331d971d5d0410d49263de133d2d9ab589b36ad0a",
+      "uid": "b150bca2f8ee6d7843ef5740a54d4019",
+      "username": "zouzias"
+    },
+    "merkle_root": {
+      "ctime": 1537993495,
+      "hash": "41fdc0f5ff52e071daf79932df5f2f69314a6d293e78a2b41ba9266e6084d176991ea255d55e377cc78cc89953e29d35e7569da7647e06d4b302bc97c67ffe94",
+      "hash_meta": "b52e11e9d9627b98385479686c8db37fe41b8ca7b6af1c3f3a6f520db35ddb51",
+      "seqno": 3696701
+    },
+    "service": {
+      "entropy": "Tn9JRDDcMhkVxIhIqzPidqdt",
+      "hostname": "www.zouzias.org",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 2
+  },
+  "client": {
+    "name": "keybase.io go client",
+    "version": "1.0.48"
+  },
+  "ctime": 1537993527,
+  "expire_in": 504576000,
+  "prev": "bf78dddd583e2aaaf114b11ea254a52e61bc8b47f7ae6534b00f9c75c9288bc2",
+  "seqno": 12,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+hKRib2R5hqhkZXRhY2hlZMOpaGFzaF90eXBlCqNrZXnEIwEg+bOprVP12rNKCAcj8zHZcdXQQQ1JJj3hM9LZq1ibNq0Kp3BheWxvYWTESpcCDMQgv3jd3Vg+KqrxFLEeolSlLmG8i0f3rmU0sA+cdckoi8LEILRRV/vDQDpDZ5bV0/ubKngEuJ7I/BGidmmEEA1Hp2HLAgHCo3NpZ8RAff+fV/VnFX34RG5P6XqirUVo4qjkXzTCV1Vhzq2eE/uvc+z/aIe/8POX4kidIDy6uECEnlIIvc5LcXOnrLx8BKhzaWdfdHlwZSCkaGFzaIKkdHlwZQildmFsdWXEIO3C0FsLe+2ziSPLW6MrRekDubAT+z0gfVF+fsXcPv/to3RhZ80CAqd2ZXJzaW9uAQ==
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/zouzias
+
+==================================================================
